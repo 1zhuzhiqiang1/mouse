@@ -1,0 +1,80 @@
+//
+//  PrefixHeader.pch
+//  luming
+//
+//  Created by anyware on 17/2/21.
+//  Copyright © 2017年 zhuzhiqiaqng. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+// 1.定义的常量
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+#define HEIGHT [UIScreen mainScreen].bounds.size.height
+#define ZQColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+
+#define kNavigationBarHeight 44
+#define kStatusBarHeight 20
+#define kMarginTopHeight 64
+#define kTabBarHeight 49
+#define ContentHeight HEIGHT-kNavigationBarHeight-kTabBarHeight-kStatusBarHeight
+
+#define FIRST_IN @"first_in" //第一次进入应用
+#define ZZHOME_VC_CENETR @"ZZHomeViewControllerCenter" //首页的通知
+#define ZZCombosControllerADD_NOTIFICATION @"ZZCombosControllerADD_NOTIFICATION"
+#define UPDATE_LAST_ID @"UPDATE_LAST_ID" //更新的最后的ID
+// 是否是iPhone
+#define iPhone [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone
+// TabBar导航栏高度
+#define TABBAR_HEIGHT (iPhone ? 49 : 100)
+//#define TABBAR_HEIGHT 100
+// 网络
+#define BASE_URL @"http://139.196.39.11:8081/"
+// 图片BASE地址
+#define BASE_IMG [BASE_URL stringByAppendingString:@"Upload/"]
+// 请求延迟时间
+#define REQUEST_TIMEOUT 20.0
+#define CURRENT_SHOP_ID @"shopId"
+
+// 2个店铺
+#define SHANGHAI @"5071e50b-172a-4065-b3fe-44d0052b5b24"
+#define HANGZHOU @"a0a63537-85a8-4bf9-a794-ff969fff5aad"
+
+// 文件
+#define  BASE_FILE [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject]
+// 保存所有门店的文件
+#define SHOP_ID_FILE [BASE_FILE stringByAppendingPathComponent:@"shop_id_file.plist"]
+// 保存所有菜品信息的文件
+#define ALL_MENU_TYPE [BASE_FILE stringByAppendingPathComponent:[NSString stringWithFormat:@"ALL_MENU_TYPE.data"]]
+
+
+// 1.1通知的常量
+#define IWTabBarViewControllerJump2Special @"jump2Special"
+
+//常用库文件
+#import "UIImage+MJ.h"
+#import "Masonry.h"
+#import "IWCommon.h"
+#import "MBProgressHUD+MJ.h"
+#import "AFNetworking.h"
+#import "AppDelegate.h"
+#import "ZZNSPreferenceUtil.h"
+
+// 自定义输出LOG
+#ifdef DEBUG
+#define MyLog(...) NSLog(__VA_ARGS__)
+#else
+#define MyLog(...)
+#endif
+
+#endif
